@@ -4,24 +4,17 @@
 개인별 피부 특성(타입, 톤, 고민)에 최적화된 화장품을 추천하기 위한 데이터 전처리 프로젝트입니다. 올리브영 웹사이트의 리뷰 데이터를 수집하고 자연어 처리 기술을 적용하여 추천 모델이 사용할 수 있는 정제된 데이터셋을 구축합니다.
 
 ✨ 주요 기능 (Features)
-웹 크롤링: Selenium을 활용하여 동적 웹사이트의 리뷰 데이터를 안정적으로 수집합니다.
-
-텍스트 정제: 정규식을 사용하여 한글, 영어, 숫자 외 불필요한 문자를 제거하고 텍스트를 표준화합니다.
-
-한국어 형태소 분석: Konlpy를 이용해 리뷰 텍스트를 토큰화하고, 명사, 동사, 형용사 등 핵심 품사만 추출합니다.
-
-감성 분석: KNU 한국어 감성 사전을 기반으로 각 리뷰의 긍정/부정 레이블을 생성하여 데이터의 활용도를 높입니다.
+- 웹 크롤링: Selenium을 활용하여 동적 웹사이트의 리뷰 데이터를 안정적으로 수집합니다.
+- 텍스트 정제: 정규식을 사용하여 한글, 영어, 숫자 외 불필요한 문자를 제거하고 텍스트를 표준화합니다.
+- 한국어 형태소 분석: Konlpy를 이용해 리뷰 텍스트를 토큰화하고, 명사, 동사, 형용사 등 핵심 품사만 추출합니다.
+- 감성 분석: KNU 한국어 감성 사전을 기반으로 각 리뷰의 긍정/부정 레이블을 생성하여 데이터의 활용도를 높입니다.
 
 🛠️ 기술 스택 (Tech Stack)
-Language: Python 3.x
-
-Crawling: Selenium, BeautifulSoup
-
-Data Handling: Pandas, Numpy
-
-NLP: Konlpy, Scikit-learn
-
-Visualization: Matplotlib, WordCloud
+- Language: Python 3.x
+- Crawling: Selenium, BeautifulSoup
+- Data Handling: Pandas, Numpy
+- NLP: Konlpy, Scikit-learn
+- Visualization: Matplotlib, WordCloud
 
 📂 프로젝트 파일 구조
 .
@@ -82,80 +75,4 @@ combined_pos_words.txt와 combined_neg_words.txt 사전을 사용합니다.
 결과: 모델링에 사용할 최종 데이터셋인 merged_output.csv가 생성됩니다.
 
 📊 최종 데이터셋 구조 (merged_output.csv)
-컬럼명
 
-설명
-
-예시
-
-product_name
-
-상품명
-
-'라로슈포제 시카플라스트 멀티 리페어 크림'
-
-customer_name
-
-리뷰 작성자명
-
-'vwaaang'
-
-skin_type
-
-피부 타입
-
-'건성'
-
-skin_tone
-
-피부 톤
-
-'쿨톤'
-
-skin_concerns
-
-피부 고민
-
-'각질 / 모공'
-
-review
-
-리뷰 원문
-
-'제품을 만난 이래로 계속 재구매중입니다...'
-
-date
-
-리뷰 작성일
-
-'2025.09.17'
-
-rating
-
-평점 (1.0 ~ 5.0)
-
-5.0
-
-gender
-
-성별
-
-'여성'
-
-tokens
-
-토큰화된 키워드
-
-"['제품', '만나', '계속', '재', '구매', ...]"
-
-Ntoken_review
-
-(분석용 추가 토큰)
-
-"['만족', '행사', '활동']"
-
-pred
-
-감성 분석 결과 (긍정: 1, 부정: 0)
-
-1
