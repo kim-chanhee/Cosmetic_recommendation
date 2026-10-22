@@ -1,40 +1,23 @@
-# 데이터 전처리
+# Data and Preprocessing
 
-리뷰에서 중복과 유효하지 않은 행을 제거하고, 한국어 분석과 감성 결과 병합에 사용할 데이터를 만듭니다.
+추천 모델에 입력할 수 있도록 리뷰를 정제하고 피부 정보와 핵심 단어를 추출합니다.
 
-[전체 코드 안내](../README.md) · 이전 [리뷰 수집](../01_크롤링/README.md) · 다음 [감성분석](../03_감성분석/README.md)
+![데이터 수집과 전처리 과정](../assets/data-preprocessing.png)
 
-## 처리 과정
+## 처리 내용
 
-원본 리뷰 → 유효하지 않은 리뷰와 중복 제거 → 피부 정보 정리·보완 → Komoran 형태소 분석 → 명사와 핵심 단어 추출 → `review_id` 생성 순서로 진행합니다.
+- 중복 리뷰와 유효하지 않은 리뷰를 제거합니다.
+- N-gram과 키워드를 사용해 피부 타입·톤·고민 정보를 정리합니다.
+- Komoran 형태소 분석으로 명사와 핵심 표현을 추출합니다.
+- 각 리뷰에 고유 ID를 부여해 후속 감성 결과와 연결합니다.
 
-| 현재 저장된 전처리 통계 | 리뷰 수 |
-|---|---:|
-| 원본 | 12,347 |
-| 유효하지 않은 리뷰 제거 | 30 |
-| 중복 제거 | 522 |
-| 최종 분석 데이터 | 11,795 |
+연구에서는 수집 12,347건과 최종 11,795건을 제시합니다. 그림의 중복 제거 수만으로 두 값의 차이를 설명할 수는 없으며, 현재 코드는 유효하지 않은 리뷰 30건과 중복 522건을 제거합니다. [현재 전처리 통계](../../outputs/reports/preprocessing/summary.json)
 
-피부 타입은 1,252개 리뷰에서 보완했고, 이후에도 5,376개 리뷰는 결측입니다. 보완 여부를 컬럼으로 남겨 원래 작성된 정보와 구분합니다. [통계 JSON](../../outputs/reports/preprocessing/summary.json)
+## 구현
 
-## 추출한 단어 살펴보기
+[preprocess_reviews.ipynb](preprocess_reviews.ipynb)를 위에서부터 실행합니다. Komoran에는 Java 런타임이 필요합니다.
 
-![리뷰에서 추출한 상위 20개 키워드](../../outputs/figures/preprocessing/top20_keywords.png)
+- 입력: [원본 리뷰](../../outputs/data/raw/acne_cream_reviews.csv)
+- 출력: [전처리 리뷰](../../outputs/data/processed/Ntoken_review.csv)
 
-막대는 리뷰에서 추출한 단어의 빈도를 보여 줍니다. 빈도가 높다고 제품 효과가 더 좋거나 추천 순위가 높다는 의미는 아닙니다.
-
-![리뷰 키워드 워드클라우드](../../outputs/figures/preprocessing/wordcloud.png)
-
-워드클라우드는 상대적으로 자주 등장하는 단어를 더 크게 표현한 보조 그림입니다.
-
-## 실행과 입출력
-
-[preprocess_reviews.ipynb](preprocess_reviews.ipynb)를 위에서부터 실행하세요. Komoran을 사용하려면 Java 런타임이 필요합니다.
-
-| 구분 | 파일 |
-|---|---|
-| 입력 | [원본 리뷰 CSV](../../outputs/data/raw/acne_cream_reviews.csv) |
-| 출력 | [전처리 CSV](../../outputs/data/processed/Ntoken_review.csv) |
-| 검증 자료 | [전처리 통계](../../outputs/reports/preprocessing/summary.json) |
-
-`review_id`는 정제된 상품·작성자·본문·날짜로 만들며, 감성 결과를 행 번호 대신 이 ID로 병합합니다.
+[전체 구현 안내](../README.md) · [다음 단계 감성분석](../03_감성분석/README.md)

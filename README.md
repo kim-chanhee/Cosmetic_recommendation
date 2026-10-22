@@ -1,62 +1,52 @@
-# 피부 특성과 리뷰 감성을 활용한 화장품 추천
+# KoBERT–SVD Hybrid Cosmetic Recommendation
 
-올리브영 리뷰에서 **사용자가 어떤 상품을 좋아했는지**, **리뷰에 어떤 감정이 담겼는지**, **어떤 피부 특성을 가졌는지**를 분석해 화장품을 추천하는 프로젝트입니다. KoBERT로 리뷰의 의미를 비교하고, SVD 계열 협업 필터링으로 사용자와 상품의 평점 패턴을 학습한 뒤 두 점수를 결합합니다.
+### 사용자 감성과 피부 특성을 반영한 개인화 화장품 추천
 
-[코드와 단계별 설명](code/README.md) · [실행 방법](docs/RUNNING.md) · [현재 추천 결과](outputs/data/recommendation/recommendations.csv)
+화장품은 같은 제품이라도 사용자의 피부 타입과 고민에 따라 만족도가 달라집니다. 이 프로젝트는 평점뿐 아니라 **리뷰에 담긴 감정**, **리뷰 문맥**, **사용자의 피부 정보**를 함께 활용하는 하이브리드 추천 시스템을 구현합니다.
 
-## 전체 흐름
+KoBERT는 한국어 리뷰의 의미를 표현하고, SVD 기반 협업 필터링은 사용자와 상품 사이의 선호 패턴을 학습합니다. 두 모델의 점수를 결합해 사용자에게 맞는 상품의 순위를 제공합니다.
 
-![리뷰 수집에서 최종 추천까지의 연구 흐름](docs/assets/research-overview.png)
+[구현 과정 살펴보기](code/README.md) · [실행 방법](docs/RUNNING.md) · [추천 노트북](code/04_추천시스템/recommend_products.ipynb)
 
-리뷰 수집 → 데이터 정제 → 감성 분석과 평점 보정 → 피부 정보로 후보 선정 → KoBERT·협업 모델 점수 계산 → 최종 추천 순서로 진행합니다. 위 그림은 연구의 전체 개념도이며, 현재 코드의 세부 계산과 예외 처리 방식은 [추천 단계 설명](code/04_추천시스템/README.md)에 정리했습니다.
+## Research Background
 
-| 분석 데이터 | 규모 |
-|---|---:|
-| 수집 리뷰 | 12,347개 |
-| 분석에 사용한 리뷰 | 11,795개 |
-| 사용자 | 7,985명 |
-| 상품 | 20개 |
+기존의 평점·구매 이력 중심 추천만으로는 리뷰에 드러나는 감성이나 피부 타입·톤·고민을 충분히 반영하기 어렵습니다. 본 연구는 감성 분석과 피부 프로필을 결합해 기능성 화장품의 개인화 추천을 지원하는 것을 목표로 합니다.
 
-전처리에서 유효하지 않은 리뷰 30개와 중복 리뷰 522개를 제거했습니다. 수치는 저장된 [전처리 통계](outputs/reports/preprocessing/summary.json)와 [추천 실행 정보](outputs/reports/recommendation/run_info.json)에 해당합니다.
+## Research Framework
 
-## 어떤 결과를 얻을 수 있나요
+![화장품 리뷰 수집부터 최종 추천까지의 연구 프레임워크](docs/assets/research-overview.png)
 
-### 사용자 한 명에게 맞춘 추천
+| 단계 | 내용 |
+|---|---|
+| Data Preprocessing | 리뷰 중복 제거, 피부 정보 추출, Komoran 형태소 분석 |
+| Sentiment Analysis | 감성 사전과 TF-IDF·로지스틱 회귀를 통한 감성 점수 생성 |
+| Skin Profile Filtering | 피부 타입·톤·고민을 바탕으로 추천 후보 선정 |
+| SVD Collaborative Filtering | 감성 정보를 반영한 평점으로 사용자·상품 선호 패턴 학습 |
+| KoBERT Content Filtering | 리뷰 임베딩과 코사인 유사도로 문맥 기반 선호도 계산 |
+| Hybrid Integration | 두 점수를 가중 결합해 Top N 상품 추천 |
 
-사용자의 평점 이력과 피부 프로필을 반영해 아직 리뷰하지 않은 상품을 추천합니다. 아래는 `vwaaang` 사용자에게 생성된 결과로, 피부 정보는 건성·쿨톤·각질/모공입니다.
+올리브영에서 수집한 리뷰 12,347개 중 최종 11,795개를 분석에 활용합니다. 구현의 입력·출력과 단계별 이미지는 [code 폴더](code/README.md)에 정리했습니다.
 
-![현재 개인화 추천 Top 10](outputs/figures/recommendation/figure4_hybrid_top10_scores.png)
+## Recommendation Example
 
-막대는 **추천 후보 안에서 정규화한 상대 점수**입니다. 정확도나 피부 적합 확률을 뜻하지 않습니다. 점수가 높은 상품부터 순위를 매기며, 현재 기본 설정은 콘텐츠와 협업 점수를 각각 50%씩 반영합니다.
+![연구에서 제시한 화장품 Top 10 추천 예시](docs/assets/recommendation-example.png)
 
-### 피부 타입별 추천과 리뷰 분포
+연구에서 제시한 추천 예시입니다. `item_id`는 상품, `final_score`는 두 모델의 점수를 결합한 추천 순위 점수입니다. 점수는 예측 정확도나 피부 적합 확률을 뜻하지 않습니다.
 
-건성·지성·복합성 등 타입별 사용자들의 선호를 모아 추천 목록을 각각 생성합니다. 그 상품들에 달린 리뷰의 피부 타입별 비율도 확인할 수 있습니다.
+현재 코드는 입력과 실행 설정에 따라 결과를 다시 계산하므로 위 예시와 순위가 다를 수 있습니다. [현재 개인 추천 결과](outputs/data/recommendation/recommendations.csv)와 [피부 타입별 추천 결과](outputs/data/recommendation/recommendations_by_skin_type.csv)를 함께 제공합니다.
 
-[타입별 결과와 그래프 읽는 방법](code/05_시각화/README.md) · [타입별 추천 CSV](outputs/data/recommendation/recommendations_by_skin_type.csv)
+## Explore the Implementation
 
-## 코드 살펴보기
+| 단계 | 설명과 코드 |
+|---|---|
+| 01 | [크롤링](code/01_크롤링/README.md) |
+| 02 | [데이터 전처리](<code/02_데이터 전처리/README.md>) |
+| 03 | [감성분석](code/03_감성분석/README.md) |
+| 04 | [추천시스템](code/04_추천시스템/README.md) |
+| 05 | [시각화](code/05_시각화/README.md) |
 
-| 순서 | 폴더 | 하는 일 |
-|---|---|---|
-| 1 | [크롤링](code/01_크롤링/README.md) | 올리브영 상품 리뷰와 피부 정보 수집 |
-| 2 | [데이터 전처리](<code/02_데이터 전처리/README.md>) | 중복 제거, 피부 정보 정리, 한국어 키워드 추출 |
-| 3 | [감성분석](code/03_감성분석/README.md) | 긍정·부정 감성을 점수로 변환 |
-| 4 | [추천시스템](code/04_추천시스템/README.md) | 피부 필터, KoBERT, 협업 모델로 추천 순위 계산 |
-| 5 | [시각화](code/05_시각화/README.md) | 추천 점수와 상품별 피부 타입 리뷰 비율 표현 |
+## Future Research
 
-기존 데이터를 이용하면 크롤링은 생략할 수 있습니다. 전처리 → 감성분석 → 추천시스템 → 시각화 노트북 순서로 실행하세요. 설치와 설정은 [실행 가이드](docs/RUNNING.md)에 있습니다.
+성분 정보·피부 시험 결과·실시간 피드백을 결합하는 멀티모달 확장, 실제 사용자 연구와 A/B 테스트, 다양한 피부 타입·연령·문화권으로의 적용 범위 확대를 향후 연구 방향으로 삼습니다.
 
-## 결과를 해석할 때
-
-피부 리뷰 비율은 해당 특성을 가진 작성자들의 구성비입니다. 피부에 대한 효과를 입증하는 수치는 아닙니다. 추천 평가는 사용자별 마지막 긍정 상품을 보류해 수행하며, 감성 모델을 통한 정답 누수를 막기 위해 평가 시 감성 보정을 끕니다. 현재 결과에서 모든 지표에 대해 하이브리드가 우수한 것은 아니며, 비교 수치는 [추천 평가표](outputs/reports/recommendation/ranking_metrics.csv)에서 확인할 수 있습니다.
-
-## 자료와 프로젝트 구성
-
-- [단계별 코드 안내](code/README.md): 처리 원리, 입력·출력, 관련 이미지와 실행 파일.
-- [출력 폴더](outputs/): 데이터, 그래프, 평가 리포트.
-- [사전과 리소스](resources/): 감성 사전과 출처.
-- [수정 및 검증 기록](docs/CHANGES.md): 알고리즘 수정 사항과 평가의 한계.
-- [연구 발표자료 원본](docs/발표자료/KoBERT-SVD/README.md): PDF와 발표 당시 이미지 기록.
-
-가상환경, 임베딩 캐시, 로컬 백업은 GitHub 업로드에서 제외합니다.
+**Keywords** · Sentiment Analysis · Hybrid Recommendation · SVD · KoBERT

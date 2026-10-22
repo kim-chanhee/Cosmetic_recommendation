@@ -1,62 +1,38 @@
-# 추천 결과 시각화
+# Results and Visualization
 
-추천 점수와 추천 상품의 리뷰 구성을 이미지로 확인합니다. 모델을 재학습하지 않고 저장된 CSV로 그래프를 다시 생성할 수 있습니다.
+연구 결과를 상품 순위와 피부 타입별 리뷰 비율로 확인합니다.
 
-[전체 코드 안내](../README.md) · 이전 [추천시스템](../04_추천시스템/README.md)
+## Top N Recommendation
 
-## 피부 타입별 추천 상품의 리뷰 구성비
+![연구에서 제시한 추천 순위와 최종 점수](../../docs/assets/recommendation-example.png)
 
-![건성 집단 추천 상품의 피부 타입별 리뷰 비율](../../outputs/figures/recommendation/by_skin_type_review_ratio/figure3_review_ratio_dry.png)
+연구에서 사용한 추천 결과 예시입니다. 상품과 최종 점수를 보여 주며 현재 코드로 다시 실행한 결과와는 순위가 다를 수 있습니다.
 
-위 그림을 읽는 방법은 다음과 같습니다.
+## Review Ratio by Skin Type
 
-- 상품 목록: **건성 집단의 선호**를 사용해 추천한 상품입니다.
-- 세로 순서: 최종 추천 점수가 높은 순서입니다.
-- 색상: 해당 상품의 전체 리뷰 중 각 피부 타입이 차지하는 비율입니다.
-- `Unknown`: 피부 타입을 확인할 수 없는 리뷰입니다.
-- 가로축: 미상 리뷰를 포함한 전체 리뷰가 분모이며 각 막대의 합은 1입니다.
+![상품별 피부 타입 리뷰 비율](../assets/skin-type-review-ratio.png)
 
-따라서 건성으로 추천받았더라도 막대 안에는 지성·복합성 등 다른 작성자의 리뷰가 함께 표시됩니다. 리뷰 구성비는 피부별 효과를 입증하는 수치가 아닙니다. 후보 선정에 쓰는 비율은 알려진 피부 정보만 분모로 사용하므로 그림의 비율과 다릅니다.
+상위 10개 상품에 달린 리뷰를 피부 타입별 비율로 표현한 예시입니다. 각 막대는 상품 하나이며, 색상은 해당 상품의 전체 리뷰 중 피부 타입이 차지하는 구성비입니다. 이 그림 자체가 피부 타입별 Top 10 추천을 뜻하지는 않습니다.
 
-### 다른 타입의 결과
+## 같은 형식으로 현재 결과 생성하기
 
-[지성](../../outputs/figures/recommendation/by_skin_type_review_ratio/figure3_review_ratio_oily.png) · [복합성](../../outputs/figures/recommendation/by_skin_type_review_ratio/figure3_review_ratio_combination.png) · [민감성](../../outputs/figures/recommendation/by_skin_type_review_ratio/figure3_review_ratio_sensitive.png) · [트러블성](../../outputs/figures/recommendation/by_skin_type_review_ratio/figure3_review_ratio_troubled.png)
+[plot_skin_ratio.ipynb](plot_skin_ratio.ipynb)를 위에서부터 실행하세요. 추천 CSV가 먼저 생성되어 있어야 합니다.
 
-현재 건성·지성·복합성은 각 10개, 민감성은 9개, 트러블성은 2개입니다. 약건성·중성은 설정된 비율 기준을 충족하는 상품이 없어 빈 상태를 표시합니다.
+- 데이터 로드와 비율 계산을 셀별로 확인합니다.
+- 타입별 추천 상품의 리뷰 비율을 300dpi PNG로 저장합니다.
+- `PREVIEW_SKIN`으로 미리 볼 피부 타입을 선택합니다.
+- 선택 셀에서 타입별 추천 점수 또는 개인 추천 그림을 생성합니다.
 
-## 추천 점수 그래프
+현재 코드는 **개인 추천**과 **피부 타입별 집단 추천**을 모두 제공합니다. 리뷰 비율 그래프는 추천된 상품의 리뷰 구성비를 설명하며, 추천 점수나 효과를 나타내지 않습니다. 미상 리뷰를 포함한 막대의 비율 합은 1입니다. 후보 선정에는 알려진 피부 정보만 분모로 사용하므로 필터 비율과 그래프 비율은 다릅니다.
 
-![개인 사용자 Top 10 추천 점수](../../outputs/figures/recommendation/figure4_hybrid_top10_scores.png)
+[현재 건성 추천 리뷰 비율](../../outputs/figures/recommendation/by_skin_type_review_ratio/figure3_review_ratio_dry.png) · [타입별 이미지 폴더](../../outputs/figures/recommendation/by_skin_type_review_ratio/) · [현재 개인 추천 점수](../../outputs/figures/recommendation/figure4_hybrid_top10_scores.png)
 
-Figure 4는 특정 사용자 한 명에게 추천한 상품의 최종 점수입니다. 타입별 추천 리뷰 비율 그림과는 추천 대상이 다릅니다. 점수는 후보 안에서 정규화한 콘텐츠·협업 점수의 가중 합입니다.
+현재 건성·지성·복합성은 각 10개, 민감성은 9개, 트러블성은 2개입니다. 약건성·중성은 기준을 충족하는 후보가 없어 빈 상태를 표시합니다.
 
-## 노트북 실행
-
-[plot_skin_ratio.ipynb](plot_skin_ratio.ipynb)를 위에서부터 실행하세요. 추천 결과 CSV가 먼저 있어야 합니다.
-
-| 단계 | 셀에서 하는 일 |
-|---|---|
-| 1~3 | 라이브러리·경로·글꼴 설정과 CSV 불러오기 |
-| 4 | 피부 타입별 리뷰 비율 계산과 합계 검증 |
-| 5~6 | 누적 막대그래프 함수 정의와 타입별 이미지 저장 |
-| 7 | `PREVIEW_SKIN`으로 미리 볼 타입 선택 |
-| 8 | 선택 사항: 타입별 추천 점수 그래프 |
-| 9 | 선택 사항: 개인 추천 Figure 3과 Figure 4 |
-
-상품명 앞 번호는 표시하지 않으며, 이미지는 300dpi PNG로 저장합니다. 8단계의 통합 추천 점수 그림은 200dpi로 저장됩니다.
-
-## 스크립트와 저장 위치
-
-[plot_skin_ratio.py](plot_skin_ratio.py)는 추천 노트북에서도 사용하는 보조 함수 모듈입니다. 프로젝트 루트에서 아래와 같이 실행할 수도 있습니다.
+보조 모듈은 [plot_skin_ratio.py](plot_skin_ratio.py)입니다. 프로젝트 루트에서 다음과 같이 실행할 수도 있습니다.
 
 ```bash
 .venv/bin/python code/05_시각화/plot_skin_ratio.py
 ```
 
-| 결과 | 저장 폴더 |
-|---|---|
-| 타입별 추천 상품의 리뷰 비율 | [by_skin_type_review_ratio](../../outputs/figures/recommendation/by_skin_type_review_ratio/) |
-| 타입별 추천 점수 | [by_skin_type](../../outputs/figures/recommendation/by_skin_type/) |
-| 개인 추천 그림 | [recommendation](../../outputs/figures/recommendation/) |
-
-`variants/`는 과거 디자인 자료입니다. 현재 코드가 계산한 최신 결과와 구분해서 확인하세요.
+[전체 구현 안내](../README.md) · [실행 가이드](../../docs/RUNNING.md)

@@ -1,25 +1,18 @@
-# 리뷰 수집
+# Data Collection
 
-올리브영 상품 리뷰에서 추천에 사용할 리뷰 본문, 별점, 작성자와 피부 정보를 수집합니다.
+올리브영 상품 리뷰를 수집해 개인화 화장품 추천에 사용할 데이터를 준비합니다. 사용자 평가와 피부 특성을 함께 확보하는 것이 이 단계의 목적입니다.
 
-[전체 코드 안내](../README.md) · 다음 단계 [데이터 전처리](<../02_데이터 전처리/README.md>)
+![리뷰 데이터 구성](../assets/review-data-columns.png)
 
-## 수집하는 정보
-
-![리뷰 데이터의 주요 항목](../assets/review-data-columns.png)
-
-상품·사용자 식별 정보와 피부 타입·피부 톤·피부 고민, 리뷰, 평점을 수집합니다. 이 정보는 이후 피부 필터링, 리뷰 의미 분석, 협업 모델의 입력이 됩니다. 이미지의 `item_id`와 `user_id`는 추천 단계의 명칭이며, 수집 CSV에서는 `product_name`과 `customer_name`으로 저장합니다.
-
-| 입력 | 출력 |
+| 정보 | 활용 |
 |---|---|
-| 올리브영 상품 리뷰 페이지 | [`outputs/data/raw/acne_cream_reviews.csv`](../../outputs/data/raw/acne_cream_reviews.csv) |
+| 상품과 사용자 | 사용자·상품 평가 관계 구성 |
+| 피부 타입·톤·고민 | 피부 프로필 기반 후보 선정 |
+| 리뷰 본문 | 감성 분석과 KoBERT 텍스트 임베딩 |
+| 평점 | 사용자 선호와 협업 모델 학습 |
 
-## 실행 파일
+[crawl_reviews.py](crawl_reviews.py)에서 수집합니다. 기존 리뷰를 사용할 경우 크롤링은 생략할 수 있습니다. 실행하면 원본 CSV를 초기화하므로 새로 수집할 때 실행하세요.
 
-[crawl_reviews.py](crawl_reviews.py)를 사용합니다. 수집 대상과 실행 환경을 확인한 뒤 프로젝트 루트에서 실행하세요.
+출력: [원본 리뷰 CSV](../../outputs/data/raw/acne_cream_reviews.csv)
 
-```bash
-.venv/bin/python code/01_크롤링/crawl_reviews.py
-```
-
-스크립트 실행 시 원본 리뷰 CSV가 초기화됩니다. 이미 저장된 데이터를 분석할 때는 이 단계를 생략하고 전처리 노트북부터 실행하세요.
+[전체 구현 안내](../README.md) · [다음 단계 전처리](<../02_데이터 전처리/README.md>)
