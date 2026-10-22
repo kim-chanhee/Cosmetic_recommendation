@@ -50,3 +50,8 @@ KoBERT는 한국어 리뷰의 의미를 표현하고, SVD 기반 협업 필터�
 성분 정보·피부 시험 결과·실시간 피드백을 결합하는 멀티모달 확장, 실제 사용자 연구와 A/B 테스트, 다양한 피부 타입·연령·문화권으로의 적용 범위 확대를 향후 연구 방향으로 삼습니다.
 
 **Keywords** · Sentiment Analysis · Hybrid Recommendation · SVD · KoBERT
+
+## 논문과 발표자료
+
+- 논문: [PDF](docs/논문/SCI2025-016_Original_Layout_Corrected.pdf) · [Word](docs/논문/SCI2025-016_Original_Layout_Corrected.docx)
+- 발표자료: [PDF](docs/KoBERT-SVD_발표자료.pdf)
