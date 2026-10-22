@@ -1,0 +1,63 @@
+{
+  "schema_version": "2.0",
+  "label_definition": "1=positive, 0=negative",
+  "target": "rating>=4 (proxy label)",
+  "split": "5-fold StratifiedGroupKFold by customer_name",
+  "lexicon_coverage": 0.8779991521831284,
+  "lexicon_report": {
+    "negative": {
+      "precision": 0.09098080462792532,
+      "recall": 0.5156482861400894,
+      "f1-score": 0.1546714349575324,
+      "support": 671.0
+    },
+    "positive": {
+      "precision": 0.9504043949336182,
+      "recall": 0.6430562725864739,
+      "f1-score": 0.7670895430471733,
+      "support": 9685.0
+    },
+    "accuracy": 0.6348010814986481,
+    "macro avg": {
+      "precision": 0.5206925997807718,
+      "recall": 0.5793522793632817,
+      "f1-score": 0.46088048900235284,
+      "support": 10356.0
+    },
+    "weighted avg": {
+      "precision": 0.8947194558552943,
+      "recall": 0.6348010814986481,
+      "f1-score": 0.7274089182375799,
+      "support": 10356.0
+    }
+  },
+  "ml_report": {
+    "negative": {
+      "precision": 0.31228373702422146,
+      "recall": 0.4640102827763496,
+      "f1-score": 0.3733195449844881,
+      "support": 778.0
+    },
+    "positive": {
+      "precision": 0.9608045868972648,
+      "recall": 0.9278387945901788,
+      "f1-score": 0.9440339859623199,
+      "support": 11017.0
+    },
+    "accuracy": 0.8972445951674438,
+    "macro avg": {
+      "precision": 0.6365441619607431,
+      "recall": 0.6959245386832642,
+      "f1-score": 0.658676765473404,
+      "support": 11795.0
+    },
+    "weighted avg": {
+      "precision": 0.9180280526707935,
+      "recall": 0.8972445951674438,
+      "f1-score": 0.9063895743403824,
+      "support": 11795.0
+    }
+  },
+  "negative_roc_auc": 0.8277750464169303,
+  "negative_average_precision": 0.3099434753962805
+}

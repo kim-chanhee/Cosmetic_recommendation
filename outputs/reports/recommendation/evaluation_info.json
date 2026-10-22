@@ -1,0 +1,11 @@
+{
+  "evaluated_users": 718,
+  "training_reviews": 10782,
+  "heldout_reviews": 1013,
+  "candidate_recall": 0.9958217270194986,
+  "cf_backend": "observed_mf",
+  "sentiment_adjustment": false,
+  "protocol": "per-user latest-positive-item holdout, shared skin-filtered candidates",
+  "training_items": 20,
+  "k": 10
+}

@@ -1,0 +1,7 @@
+{
+  "repository": "https://github.com/park1200656/KnuSentiLex",
+  "commit": "c95a8a9bcb78ef92e3f8ddd277abaf31451d9f23",
+  "source_url": "https://raw.githubusercontent.com/park1200656/KnuSentiLex/c95a8a9bcb78ef92e3f8ddd277abaf31451d9f23/KnuSentiLex/data/SentiWord_info.json",
+  "sha256": "680e2339e1aeb3675bc5e801b9a97ce7e7163a43bd4dca32ea9de040ba4a1871",
+  "note": "Original aliases archived in .backups/before_pipeline_fixes.zip. These lists are reconstructed from upstream KNU, not the unavailable original custom combined lists."
+}

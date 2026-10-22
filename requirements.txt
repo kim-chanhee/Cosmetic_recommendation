@@ -1,0 +1,20 @@
+# Python 3.11 이상 권장. Komoran에는 Java 런타임이 별도로 필요합니다.
+pandas>=2.0
+numpy>=1.24
+torch>=2.0
+scikit-learn>=1.3
+matplotlib>=3.7
+transformers>=4.57.0,<5
+huggingface-hub>=0.34.0,<1.0
+sentencepiece>=0.1.99
+konlpy>=0.6.0
+wordcloud>=1.9
+selenium>=4.0
+nbformat>=5.9
+nbclient>=0.10
+ipykernel>=6.0
+jupyterlab>=4.0
+
+# 선택: 지원되는 Python/NumPy 환경에서만 설치합니다.
+# 없으면 노트북의 관측 평점 기반 PyTorch 잠재요인 모델을 사용합니다.
+# scikit-surprise>=1.1.3

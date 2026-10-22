@@ -1,0 +1,17 @@
+{
+  "user_id": "vwaaang",
+  "top_k": 10,
+  "content_weight": 0.5,
+  "skin_filter_threshold": 0.1,
+  "cf_backend": "observed_mf",
+  "model": "monologg/kobert",
+  "model_revision": "38279184ba645e8c94d709fbe92eb5bcb47312c1",
+  "schema_version": "2.0",
+  "review_count": 11795,
+  "item_count": 20,
+  "profile": {
+    "skin_type": "건성",
+    "skin_tone": "쿨톤",
+    "skin_concerns": "각질 / 모공"
+  }
+}

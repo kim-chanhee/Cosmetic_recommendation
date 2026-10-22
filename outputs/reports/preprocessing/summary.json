@@ -1,0 +1,8 @@
+{
+  "raw_rows": 12347,
+  "invalid_rows_removed": 30,
+  "duplicate_rows_removed": 522,
+  "processed_rows": 11795,
+  "inferred_skin_rows": 1252,
+  "missing_skin_rows": 5376
+}
