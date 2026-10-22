@@ -6,7 +6,7 @@
 
 KoBERT는 한국어 리뷰의 의미를 표현하고, SVD 기반 협업 필터링은 사용자와 상품 사이의 선호 패턴을 학습합니다. 두 모델의 점수를 결합해 사용자에게 맞는 상품의 순위를 제공합니다.
 
-[구현 과정 살펴보기](code/README.md) · [실행 방법](docs/RUNNING.md) · [추천 노트북](code/04_추천시스템/recommend_products.ipynb)
+[구현 과정 살펴보기](code/README.md) · [실행 방법](docs/RUNNING.md) · [추천 노트북](code/04_추천시스템/recommend_products.ipynb) · [연구 발표 PDF](docs/KoBERT-SVD_발표자료.pdf)
 
 ## Research Background
 
