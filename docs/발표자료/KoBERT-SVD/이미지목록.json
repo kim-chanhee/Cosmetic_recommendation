@@ -1,0 +1,794 @@
+[
+  {
+    "page": 1,
+    "text": "A KoBERT–SVD Hybrid Model for Personalized \nCosmetic Recommendations\nBased on User Sentiment and Skin Attributes\nChanhee Kim1, Haram Kim2 and Dongsoo Kim1*\nSoongsil University\n1 Department of Information Technology Distribution and Logistics,\n 2 Industrial and Information Systems Engineering\n Presenter : Chanhee Kim",
+    "images": [
+      {
+        "file": "image-001.png",
+        "source": "Image2.jp2",
+        "width": 351,
+        "height": 35
+      },
+      {
+        "file": "image-002.png",
+        "source": "Image3.jp2",
+        "width": 1574,
+        "height": 35
+      },
+      {
+        "file": "image-003.png",
+        "source": "Image6.jpg",
+        "width": 1000,
+        "height": 413
+      },
+      {
+        "file": "image-004.png",
+        "source": "Image7.jp2",
+        "width": 2048,
+        "height": 418
+      }
+    ]
+  },
+  {
+    "page": 2,
+    "text": "Outline\n1.Research Framework: SIX STEPS\n2.Final Recommendation Results \n3.Limitations and Future Research Directions",
+    "images": [
+      {
+        "file": "image-001.png",
+        "source": "Image9.jp2",
+        "width": 351,
+        "height": 35
+      },
+      {
+        "file": "image-005.png",
+        "source": "Image10.jp2",
+        "width": 1574,
+        "height": 35
+      },
+      {
+        "file": "image-006.png",
+        "source": "Image11.jp2",
+        "width": 1506,
+        "height": 4
+      }
+    ]
+  },
+  {
+    "page": 3,
+    "text": "Background\nAI Growth  Rapid growth of AI → Data-driven personalization\nSkin Diversity  High diversity in skin types and tones\nCurrent Limits  Current systems = limited (ratings or history only)\nMissing Elements  Lack of emotional & skin-based understanding\nResearch Goal  Build hybrid model reflecting emotion and skin profile",
+    "images": [
+      {
+        "file": "image-001.png",
+        "source": "Image9.jp2",
+        "width": 351,
+        "height": 35
+      },
+      {
+        "file": "image-002.png",
+        "source": "Image13.jp2",
+        "width": 1574,
+        "height": 35
+      },
+      {
+        "file": "image-006.png",
+        "source": "Image14.jp2",
+        "width": 1506,
+        "height": 4
+      },
+      {
+        "file": "image-007.png",
+        "source": "Image15.jp2",
+        "width": 1174,
+        "height": 94
+      },
+      {
+        "file": "image-008.png",
+        "source": "Image16.jp2",
+        "width": 570,
+        "height": 94
+      },
+      {
+        "file": "image-009.png",
+        "source": "Image17.jp2",
+        "width": 1174,
+        "height": 94
+      },
+      {
+        "file": "image-010.png",
+        "source": "Image18.jp2",
+        "width": 570,
+        "height": 94
+      },
+      {
+        "file": "image-009.png",
+        "source": "Image19.jp2",
+        "width": 1174,
+        "height": 94
+      },
+      {
+        "file": "image-011.png",
+        "source": "Image20.jp2",
+        "width": 570,
+        "height": 94
+      },
+      {
+        "file": "image-012.png",
+        "source": "Image21.jp2",
+        "width": 1174,
+        "height": 94
+      },
+      {
+        "file": "image-013.png",
+        "source": "Image22.jp2",
+        "width": 570,
+        "height": 94
+      },
+      {
+        "file": "image-010.png",
+        "source": "Image23.jp2",
+        "width": 570,
+        "height": 94
+      }
+    ]
+  },
+  {
+    "page": 4,
+    "text": "Research Overview: Six Stages\n",
+    "images": [
+      {
+        "file": "image-001.png",
+        "source": "Image9.jp2",
+        "width": 351,
+        "height": 35
+      },
+      {
+        "file": "image-005.png",
+        "source": "Image24.jp2",
+        "width": 1574,
+        "height": 35
+      },
+      {
+        "file": "image-006.png",
+        "source": "Image14.jp2",
+        "width": 1506,
+        "height": 4
+      },
+      {
+        "file": "image-014.png",
+        "source": "Image25.jpg",
+        "width": 1461,
+        "height": 398
+      }
+    ]
+  },
+  {
+    "page": 5,
+    "text": "Data & Preprocessing\n12,347\nproduct reviews collected\n522\n duplicates removed\n11,795\nvalid dataset extracted\nData Collection\nWeb Crawling of Cosmetic Review \nData from the Olive Young Website\nDuplicate Removal\nRemoval of Identical Reviews and \nDuplicate User Entries\nSkin Type Extraction\nExtraction of Skin Type, Tone, and \nConcerns Using the N-gram \nTechnique\nMorphological Analysis\nKeyword Extraction Using the \nKomoran Morphological Analyzer\n",
+    "images": [
+      {
+        "file": "image-001.png",
+        "source": "Image9.jp2",
+        "width": 351,
+        "height": 35
+      },
+      {
+        "file": "image-002.png",
+        "source": "Image26.jp2",
+        "width": 1574,
+        "height": 35
+      },
+      {
+        "file": "image-015.png",
+        "source": "Image27.jp2",
+        "width": 768,
+        "height": 324
+      },
+      {
+        "file": "image-016.png",
+        "source": "Image28.jp2",
+        "width": 768,
+        "height": 324
+      },
+      {
+        "file": "image-017.png",
+        "source": "Image29.jp2",
+        "width": 768,
+        "height": 324
+      },
+      {
+        "file": "image-018.png",
+        "source": "Image30.jp2",
+        "width": 768,
+        "height": 540
+      },
+      {
+        "file": "image-019.png",
+        "source": "Image31.jp2",
+        "width": 192,
+        "height": 192
+      },
+      {
+        "file": "image-020.png",
+        "source": "Image32.jp2",
+        "width": 81,
+        "height": 96
+      },
+      {
+        "file": "image-021.png",
+        "source": "Image33.jp2",
+        "width": 768,
+        "height": 480
+      },
+      {
+        "file": "image-022.png",
+        "source": "Image34.jp2",
+        "width": 192,
+        "height": 192
+      },
+      {
+        "file": "image-023.png",
+        "source": "Image35.jp2",
+        "width": 72,
+        "height": 96
+      },
+      {
+        "file": "image-018.png",
+        "source": "Image36.jp2",
+        "width": 768,
+        "height": 540
+      },
+      {
+        "file": "image-024.png",
+        "source": "Image37.jp2",
+        "width": 192,
+        "height": 192
+      },
+      {
+        "file": "image-025.png",
+        "source": "Image38.jp2",
+        "width": 72,
+        "height": 96
+      },
+      {
+        "file": "image-026.png",
+        "source": "Image39.jp2",
+        "width": 192,
+        "height": 192
+      },
+      {
+        "file": "image-027.png",
+        "source": "Image40.jp2",
+        "width": 90,
+        "height": 96
+      },
+      {
+        "file": "image-028.png",
+        "source": "Image42.jpg",
+        "width": 1106,
+        "height": 770
+      },
+      {
+        "file": "image-029.png",
+        "source": "Image43.jp2",
+        "width": 63,
+        "height": 72
+      },
+      {
+        "file": "image-029.png",
+        "source": "Image44.jp2",
+        "width": 63,
+        "height": 72
+      }
+    ]
+  },
+  {
+    "page": 6,
+    "text": "Sentiment Analysis\nSentiment Analysis Using TF-IDF and Logistic Regression\nReview Text\nUser Comments and Original Ratings\nSentiment Analysis\nRule-Based Approach Using Sentiment Lexicon\nTF-IDF Vectorization and Logistic Regression \nModel Application\nRating Augmentation\nIntegrating Sentiment Score \n(Positive/Negative) into Original \nRatings Created “rating_aug” to \nReflect Users’ Emotional Satisfaction\n",
+    "images": [
+      {
+        "file": "image-001.png",
+        "source": "Image9.jp2",
+        "width": 351,
+        "height": 35
+      },
+      {
+        "file": "image-002.png",
+        "source": "Image45.jp2",
+        "width": 1574,
+        "height": 35
+      },
+      {
+        "file": "image-030.png",
+        "source": "Image46.jp2",
+        "width": 768,
+        "height": 456
+      },
+      {
+        "file": "image-031.png",
+        "source": "Image47.jp2",
+        "width": 192,
+        "height": 192
+      },
+      {
+        "file": "image-032.png",
+        "source": "Image48.jp2",
+        "width": 63,
+        "height": 96
+      },
+      {
+        "file": "image-033.png",
+        "source": "Image49.jp2",
+        "width": 63,
+        "height": 72
+      },
+      {
+        "file": "image-034.png",
+        "source": "Image50.jp2",
+        "width": 768,
+        "height": 456
+      },
+      {
+        "file": "image-035.png",
+        "source": "Image51.jp2",
+        "width": 192,
+        "height": 192
+      },
+      {
+        "file": "image-036.png",
+        "source": "Image52.jp2",
+        "width": 72,
+        "height": 96
+      },
+      {
+        "file": "image-037.png",
+        "source": "Image53.jp2",
+        "width": 768,
+        "height": 456
+      },
+      {
+        "file": "image-038.png",
+        "source": "Image54.jp2",
+        "width": 192,
+        "height": 192
+      },
+      {
+        "file": "image-039.png",
+        "source": "Image55.jp2",
+        "width": 81,
+        "height": 96
+      },
+      {
+        "file": "image-033.png",
+        "source": "Image56.jp2",
+        "width": 63,
+        "height": 72
+      }
+    ]
+  },
+  {
+    "page": 7,
+    "text": "Skin Profile Filtering\n",
+    "images": [
+      {
+        "file": "image-040.png",
+        "source": "Image57.jp2",
+        "width": 351,
+        "height": 35
+      },
+      {
+        "file": "image-002.png",
+        "source": "Image58.jp2",
+        "width": 1574,
+        "height": 35
+      },
+      {
+        "file": "image-006.png",
+        "source": "Image14.jp2",
+        "width": 1506,
+        "height": 4
+      },
+      {
+        "file": "image-041.png",
+        "source": "Image59.jpg",
+        "width": 1792,
+        "height": 618
+      }
+    ]
+  },
+  {
+    "page": 8,
+    "text": "Model A: SVD Collaborative Filtering\nSVD Model Implementation\nUtilizing Sentiment-Adjusted Ratings\nUser–Item Interaction Matrix\nMatrix Factorization\nVisualization of the SVD Model Concept\n𝐴=𝑈Σ𝑉𝑇\nUser latent trait   Item",
+    "images": [
+      {
+        "file": "image-001.png",
+        "source": "Image9.jp2",
+        "width": 351,
+        "height": 35
+      },
+      {
+        "file": "image-002.png",
+        "source": "Image60.jp2",
+        "width": 1574,
+        "height": 35
+      },
+      {
+        "file": "image-042.png",
+        "source": "Image61.jp2",
+        "width": 1788,
+        "height": 1524
+      },
+      {
+        "file": "image-043.png",
+        "source": "Image62.jp2",
+        "width": 90,
+        "height": 72
+      },
+      {
+        "file": "image-044.png",
+        "source": "Image63.jp2",
+        "width": 1668,
+        "height": 252
+      },
+      {
+        "file": "image-045.png",
+        "source": "Image64.jp2",
+        "width": 1668,
+        "height": 180
+      },
+      {
+        "file": "image-046.png",
+        "source": "Image65.jp2",
+        "width": 1788,
+        "height": 828
+      },
+      {
+        "file": "image-047.png",
+        "source": "Image66.jpg",
+        "width": 1650,
+        "height": 262
+      },
+      {
+        "file": "image-048.png",
+        "source": "Image69.jp2",
+        "width": 1184,
+        "height": 412
+      }
+    ]
+  },
+  {
+    "page": 9,
+    "text": "Model B: KoBERT Content Filtering\nWhat is KoBERT?\n- A Korean Language–Specialized \nModel (Korean BERT)\n- Captures the Contextual Meaning of \nReview Texts\n- Used for Generating User Preference \nProfiles\nModel Objective\n- Provides Meaning-Based \nRecommendations Beyond Simple \nKeyword Matching\n- Calculates Contextual Similarity of \nReview Texts\nKoBERT Content Filtering Process\nReview Text\nUser Review Sentence\nKoBERT Vectorization\nSentence → Vector \nSimilarity Calculation\nCosine SimilarityRepresentation",
+    "images": [
+      {
+        "file": "image-001.png",
+        "source": "Image9.jp2",
+        "width": 351,
+        "height": 35
+      },
+      {
+        "file": "image-002.png",
+        "source": "Image45.jp2",
+        "width": 1574,
+        "height": 35
+      },
+      {
+        "file": "image-049.png",
+        "source": "Image70.jp2",
+        "width": 75,
+        "height": 60
+      },
+      {
+        "file": "image-050.png",
+        "source": "Image71.jp2",
+        "width": 69,
+        "height": 60
+      },
+      {
+        "file": "image-051.png",
+        "source": "Image72.jp2",
+        "width": 624,
+        "height": 396
+      },
+      {
+        "file": "image-052.png",
+        "source": "Image73.jp2",
+        "width": 144,
+        "height": 144
+      },
+      {
+        "file": "image-053.png",
+        "source": "Image74.jp2",
+        "width": 45,
+        "height": 84
+      },
+      {
+        "file": "image-029.png",
+        "source": "Image44.jp2",
+        "width": 63,
+        "height": 72
+      },
+      {
+        "file": "image-054.png",
+        "source": "Image75.jp2",
+        "width": 624,
+        "height": 396
+      },
+      {
+        "file": "image-055.png",
+        "source": "Image76.jp2",
+        "width": 144,
+        "height": 144
+      },
+      {
+        "file": "image-056.png",
+        "source": "Image77.jp2",
+        "width": 54,
+        "height": 84
+      },
+      {
+        "file": "image-057.png",
+        "source": "Image78.jp2",
+        "width": 624,
+        "height": 396
+      },
+      {
+        "file": "image-058.png",
+        "source": "Image79.jp2",
+        "width": 144,
+        "height": 144
+      },
+      {
+        "file": "image-059.png",
+        "source": "Image80.jp2",
+        "width": 45,
+        "height": 84
+      }
+    ]
+  },
+  {
+    "page": 10,
+    "text": "Hybrid Integration\nModel A (Collaborative Filtering)\nSVD-Based Recommendation Score\nModel B (Content-Based Filtering)\nKoBERT-Based Recommendation Score\nWeighted Score Fusion\nFinal Recommendation\nTop N Products Recommended\nSVD score  :  w₁,  KoBERT score  :  w₂\nFinal Score = w₁ × SVD_Score + w₂ × KoBERT_Score\nCombining the SVD Model and the KoBERT Model",
+    "images": [
+      {
+        "file": "image-060.png",
+        "source": "Image81.jp2",
+        "width": 618,
+        "height": 480
+      },
+      {
+        "file": "image-040.png",
+        "source": "Image82.jp2",
+        "width": 351,
+        "height": 35
+      },
+      {
+        "file": "image-061.png",
+        "source": "Image83.jp2",
+        "width": 1574,
+        "height": 35
+      },
+      {
+        "file": "image-006.png",
+        "source": "Image14.jp2",
+        "width": 1506,
+        "height": 4
+      },
+      {
+        "file": "image-062.png",
+        "source": "Image84.jp2",
+        "width": 618,
+        "height": 480
+      },
+      {
+        "file": "image-063.png",
+        "source": "Image85.jp2",
+        "width": 120,
+        "height": 120
+      },
+      {
+        "file": "image-064.png",
+        "source": "Image86.jp2",
+        "width": 60,
+        "height": 48
+      },
+      {
+        "file": "image-065.png",
+        "source": "Image87.jp2",
+        "width": 120,
+        "height": 120
+      },
+      {
+        "file": "image-066.png",
+        "source": "Image88.jp2",
+        "width": 36,
+        "height": 48
+      },
+      {
+        "file": "image-067.png",
+        "source": "Image89.jp2",
+        "width": 96,
+        "height": 108
+      },
+      {
+        "file": "image-068.png",
+        "source": "Image90.jp2",
+        "width": 618,
+        "height": 456
+      },
+      {
+        "file": "image-069.png",
+        "source": "Image91.jp2",
+        "width": 120,
+        "height": 120
+      },
+      {
+        "file": "image-070.png",
+        "source": "Image92.jp2",
+        "width": 60,
+        "height": 48
+      },
+      {
+        "file": "image-067.png",
+        "source": "Image93.jp2",
+        "width": 96,
+        "height": 108
+      },
+      {
+        "file": "image-071.png",
+        "source": "Image94.jp2",
+        "width": 618,
+        "height": 396
+      },
+      {
+        "file": "image-072.png",
+        "source": "Image95.jp2",
+        "width": 120,
+        "height": 120
+      },
+      {
+        "file": "image-073.png",
+        "source": "Image96.jp2",
+        "width": 48,
+        "height": 48
+      },
+      {
+        "file": "image-074.png",
+        "source": "Image97.jp2",
+        "width": 48,
+        "height": 48
+      },
+      {
+        "file": "image-074.png",
+        "source": "Image98.jp2",
+        "width": 48,
+        "height": 48
+      }
+    ]
+  },
+  {
+    "page": 11,
+    "text": "Results & Evaluation\nTop-n items\nProportion of reviews for each product",
+    "images": [
+      {
+        "file": "image-001.png",
+        "source": "Image9.jp2",
+        "width": 351,
+        "height": 35
+      },
+      {
+        "file": "image-002.png",
+        "source": "Image13.jp2",
+        "width": 1574,
+        "height": 35
+      },
+      {
+        "file": "image-006.png",
+        "source": "Image14.jp2",
+        "width": 1506,
+        "height": 4
+      },
+      {
+        "file": "image-075.png",
+        "source": "Image99.jpg",
+        "width": 652,
+        "height": 344
+      },
+      {
+        "file": "image-076.png",
+        "source": "Image100.jpg",
+        "width": 2028,
+        "height": 1478
+      }
+    ]
+  },
+  {
+    "page": 12,
+    "text": "Conclusion\n Expected Outcomes\n1. Personalization Enhancement\n→ Improves recommendation accuracy by reflecting both skin \ncharacteristics and user emotions.\n2. Emotion-Based Recommendation\n→ Provides customized results by analyzing positive and negative \nsentiments from user reviews.\nFuture Research Directions\n1. Integration of Multimodal Data Sources\n→ Incorporate ingredient composition, dermatological test results, and \nreal-time user feedback.\n2. User Study Validation\n→ Conduct A/B testing and real-user evaluations to verify performance and \nsatisfaction.\n3. Efficient Computation\n→ Reduces computational load and increases processing speed through \nskin profile filtering.\n3. Model Generalization Enhancement\n→ Expand model applicability across various skin types, age groups, and \ncultural backgrounds.",
+    "images": [
+      {
+        "file": "image-077.png",
+        "source": "Image101.jp2",
+        "width": 1788,
+        "height": 756
+      },
+      {
+        "file": "image-078.png",
+        "source": "Image102.jp2",
+        "width": 144,
+        "height": 144
+      },
+      {
+        "file": "image-001.png",
+        "source": "Image9.jp2",
+        "width": 351,
+        "height": 35
+      },
+      {
+        "file": "image-002.png",
+        "source": "Image103.jp2",
+        "width": 1574,
+        "height": 35
+      },
+      {
+        "file": "image-006.png",
+        "source": "Image14.jp2",
+        "width": 1506,
+        "height": 4
+      },
+      {
+        "file": "image-079.png",
+        "source": "Image104.jp2",
+        "width": 60,
+        "height": 84
+      },
+      {
+        "file": "image-077.png",
+        "source": "Image105.jp2",
+        "width": 1788,
+        "height": 756
+      },
+      {
+        "file": "image-078.png",
+        "source": "Image106.jp2",
+        "width": 144,
+        "height": 144
+      },
+      {
+        "file": "image-080.png",
+        "source": "Image107.jp2",
+        "width": 45,
+        "height": 84
+      }
+    ]
+  },
+  {
+    "page": 13,
+    "text": "Thank You\nFirst Author: Chanhee Kim\nE-mail: chan4782@soongsil.ac.kr\nCorresponding Author: Haram Kim, Dongsoo Kim\nE-mail: haramkim68@soongsil.ac.kr, dskim@ssu.ac.kr\nConclusion & Next Steps\nThis study proposes a novel SVD-KoBERT hybrid model \nfor personalized cosmetic recommendations. \nIt effectively integrates collaborative and content-based filtering \nby analyzing user sentiment and skin attributes to deliver more accurate results.",
+    "images": [
+      {
+        "file": "image-001.png",
+        "source": "Image9.jp2",
+        "width": 351,
+        "height": 35
+      },
+      {
+        "file": "image-002.png",
+        "source": "Image13.jp2",
+        "width": 1574,
+        "height": 35
+      },
+      {
+        "file": "image-003.png",
+        "source": "Image109.jpg",
+        "width": 1000,
+        "height": 413
+      },
+      {
+        "file": "image-004.png",
+        "source": "Image110.jp2",
+        "width": 2048,
+        "height": 418
+      }
+    ]
+  }
+]

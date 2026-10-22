@@ -43,3 +43,7 @@ code/
 추천 표는 `outputs/data/recommendation/recommendations.csv`, 그래프는 `outputs/figures/recommendation/`에 저장됩니다. 고정된 상품·점수를 출력하지 않습니다. 감성 라벨은 1=긍정, 0=부정으로 통일했고 결측 피부 정보는 필터 조건에서 제외합니다.
 
 감성 정답은 평점 기반 대리 라벨입니다. 추천 평가는 감성 보정을 끈 사용자별 보류 실험이며 운영 모델 전체 성능으로 해석하지 않습니다. 검증 결과와 한계는 [수정 내역](docs/CHANGES.md)에 기록합니다.
+
+## 연구 발표자료
+
+[KoBERT SVD 발표자료와 이미지 설명](docs/발표자료/KoBERT-SVD/README.md)에서 원본 PDF, 추출 이미지, 슬라이드별 설명을 확인할 수 있습니다.
